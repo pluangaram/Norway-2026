@@ -1,0 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ying's Norway Trip · May 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fjord: #1a3a4a;
+    --fjord-mid: #2d5a72;
+    --fjord-light: #4a8fa8;
+    --sky: #c8dfe8;
+    --snow: #f4f0eb;
+    --moss: #6b8f5e;
+    --moss-light: #a8c49a;
+    --amber: #d4874a;
+    --cream: #faf7f2;
+    --ink: #1c1c1c;
+    --ink-mid: #4a4a4a;
+    --ink-light: #888;
+    --border: rgba(26,58,74,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: var(--fjord);
+    color: white;
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='600' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,120 Q80,60 160,100 Q240,140 320,80 Q400,20 480,90 Q540,140 600,100 L600,200 L0,200Z' fill='%232d5a72' opacity='0.5'/%3E%3Cpath d='M0,150 Q100,100 200,130 Q300,160 400,110 Q500,60 600,120 L600,200 L0,200Z' fill='%234a8fa8' opacity='0.3'/%3E%3C/svg%3E") bottom/cover no-repeat;
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; max-width: 960px; margin: 0 auto; }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .hero h1 em { font-style: italic; color: var(--sky); }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.65); margin-bottom: 28px; font-weight: 300; }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat-val { font-size: 20px; font-weight: 500; color: white; }
+  .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* BOOKING STRIP */
+  .booking-strip {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 14px 40px;
+  }
+  .booking-strip-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .bk-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-mid);
+  }
+  .bk-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .bk-dot.confirmed { background: var(--moss); }
+  .bk-dot.pending   { background: var(--amber); }
+  .bk-label { font-weight: 500; color: var(--ink); }
+  .bk-sep { color: var(--border); font-size: 16px; }
+
+  /* MAIN LAYOUT */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 40px 60px; }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fjord-mid);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* PHASE TABS */
+  .phase-nav {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 28px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+  }
+  .phase-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-light);
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .phase-btn:hover { background: var(--sky); color: var(--fjord); }
+  .phase-btn.active { background: var(--fjord); color: white; }
+  .phase-btn .pb-loc { display: block; font-size: 10px; font-weight: 300; margin-top: 1px; opacity: 0.75; }
+
+  /* DAY CARDS */
+  .days-grid { display: flex; flex-direction: column; gap: 10px; }
+
+  .day-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .day-card:hover { box-shadow: 0 4px 20px rgba(26,58,74,0.08); }
+  .day-card.hidden { display: none; }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-num {
+    min-width: 64px;
+    padding: 16px 0;
+    text-align: center;
+    background: var(--fjord);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .day-num .dn { font-size: 20px; font-weight: 500; line-height: 1; }
+  .day-num .dd { font-size: 10px; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+
+  .day-header-meta {
+    flex: 1;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .day-date { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .day-loc { font-size: 12px; color: var(--ink-light); }
+  .day-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; align-items: center; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+  }
+  .badge-travel { background: #e8f0f5; color: var(--fjord); }
+  .badge-stay   { background: #edf4ea; color: #3d6b34; }
+  .badge-act    { background: #fdf2e8; color: #8b4e1a; }
+  .badge-fly    { background: #f0e8f5; color: #5a2d7a; }
+
+  .day-chevron {
+    padding: 0 16px;
+    color: var(--ink-light);
+    font-size: 14px;
+    transition: transform 0.2s;
+  }
+  .day-card.open .day-chevron { transform: rotate(180deg); }
+  .day-card.open .day-num { background: var(--fjord-mid); }
+
+  .day-body {
+    display: none;
+    padding: 0 16px 16px 80px;
+    border-top: 1px solid var(--border);
+  }
+  .day-card.open .day-body { display: block; }
+
+  /* TIMELINE IN DAY BODY */
+  .timeline { padding-top: 14px; }
+  .tl-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .tl-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 22px;
+    bottom: -4px;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-dot {
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    border: 2px solid var(--fjord-light);
+    background: white;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .tl-dot.flight { border-color: #9b6bb5; background: #f0e8f5; }
+  .tl-dot.car    { border-color: var(--amber); background: #fdf2e8; }
+  .tl-dot.cruise { border-color: var(--moss); background: #edf4ea; }
+  .tl-dot.info   { border-color: var(--sky); background: #e8f0f5; }
+  .tl-content { flex: 1; }
+  .tl-title { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .tl-detail { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+  .tl-ref { font-size: 11px; color: var(--ink-light); font-family: monospace; background: var(--snow); padding: 1px 5px; border-radius: 3px; }
+
+  /* INFO BOXES */
+  .info-box {
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .info-box.flight-box { background: #f0e8f5; border-left: 3px solid #9b6bb5; }
+  .info-box.car-box    { background: #fdf2e8; border-left: 3px solid var(--amber); }
+  .info-box.accom-box  { background: #edf4ea; border-left: 3px solid var(--moss); }
+  .info-box .ib-title  { font-weight: 500; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+  .info-box .ib-detail { color: var(--ink-mid); }
+
+  /* ACCOMMODATION PANEL */
+  .accom-panel {
+    margin-bottom: 32px;
+  }
+  .accom-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .accom-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .accom-card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .accom-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--fjord);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .accom-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .accom-dates { font-size: 11px; color: var(--ink-light); margin-top: 1px; }
+  .accom-addr { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+  .accom-nights {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--fjord-mid);
+    font-weight: 500;
+    background: var(--sky);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  /* ACCOMMODATION LOCAL INFO */
+  .accom-divider { border: none; border-top: 1px solid var(--border); margin: 12px 0 10px; }
+  .accom-local-label { font-size: 10px; font-weight: 600; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 5px; }
+  .accom-local-row { display: flex; align-items: baseline; gap: 6px; font-size: 11.5px; color: var(--ink-mid); line-height: 1.55; margin-bottom: 3px; }
+  .accom-local-row .al-icon { font-size: 12px; flex-shrink: 0; }
+  .accom-local-row strong { color: var(--ink); font-weight: 500; }
+  .accom-local-row .al-hours { color: var(--ink-light); font-size: 10.5px; }
+  .accom-local-note { margin-top: 8px; font-size: 11px; color: var(--moss); background: #f0f6ee; border-radius: 6px; padding: 5px 8px; line-height: 1.5; }
+
+  /* FLIGHTS PANEL */
+  .flights-panel { margin-bottom: 32px; }
+  .flight-row {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .fl-num { font-size: 15px; font-weight: 500; color: var(--fjord); min-width: 60px; }
+  .fl-route { flex: 1; font-size: 13px; color: var(--ink-mid); }
+  .fl-times { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .fl-detail { font-size: 11px; color: var(--ink-light); }
+  .fl-status {
+    font-size: 10px; font-weight: 500;
+    padding: 3px 8px; border-radius: 999px;
+    background: #edf4ea; color: #3d6b34;
+    letter-spacing: 0.04em;
+  }
+
+  /* CAR RENTAL PANEL */
+  .car-panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .car-icon { font-size: 36px; flex-shrink: 0; }
+  .car-info { flex: 1; }
+  .car-name { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .car-ev { font-size: 11px; background: #edf4ea; color: #3d6b34; padding: 2px 7px; border-radius: 999px; font-weight: 500; display: inline-block; margin-bottom: 8px; }
+  .car-specs { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .car-spec { font-size: 12px; color: var(--ink-mid); }
+  .car-pickup-row { display: flex; gap: 24px; flex-wrap: wrap; }
+  .car-pickup { font-size: 12px; color: var(--ink-mid); }
+  .car-pickup strong { color: var(--ink); display: block; font-size: 13px; }
+  .car-ref { font-size: 11px; color: var(--ink-light); font-family: monospace; }
+
+  /* MAP LINK */
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--fjord-mid);
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid var(--fjord-light);
+    border-radius: 6px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .map-btn:hover { background: var(--fjord); color: white; border-color: var(--fjord); }
+
+  /* CHECKLIST */
+  .checklist { margin-bottom: 32px; }
+  .check-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .check-item:hover { border-color: var(--fjord-light); }
+  .check-item.done { background: #edf4ea; border-color: var(--moss-light); }
+  .check-item.done .check-label { text-decoration: line-through; color: var(--ink-light); }
+  .check-box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    transition: all 0.15s;
+  }
+  .check-item.done .check-box { background: var(--moss); border-color: var(--moss); color: white; }
+  .check-priority { font-size: 10px; color: var(--amber); font-weight: 500; margin-left: auto; }
+  .check-priority.ok { color: var(--moss); }
+
+  /* NORWAY TIPS */
+  .tips { margin-bottom: 32px; }
+  .tip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tip-card {
+    background: var(--fjord);
+    color: white;
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .tip-icon { font-size: 20px; margin-bottom: 6px; }
+  .tip-title { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
+  .tip-text { font-size: 11px; opacity: 0.75; line-height: 1.5; }
+
+  /* ROUTE STRIP */
+  .route-strip {
+    background: var(--snow);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+  .route-strip-title { font-weight: 500; color: var(--fjord); font-size: 12px; margin-bottom: 6px; }
+  .route-steps {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    font-size: 11px;
+    color: var(--ink-mid);
+  }
+  .route-node {
+    background: var(--fjord);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .route-node.stop { background: var(--amber); }
+  .route-node.lunch { background: var(--moss); }
+  .route-arrow { color: var(--ink-light); font-size: 12px; }
+  .route-meta { color: var(--ink-light); font-size: 11px; margin-top: 5px; }
+
+  /* BIRTHDAY CARD */
+  #day9 { border-color: var(--amber); border-width: 2px; }
+  #day9 .day-header { background: linear-gradient(135deg, #fdf2e8 0%, #faeeda 100%); }
+
+  /* BERGEN CARD */
+  .bc-panel {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .bc-header {
+    background: var(--fjord);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bc-header-icon { font-size: 24px; }
+  .bc-header-text h3 { font-size: 16px; font-weight: 500; margin-bottom: 2px; }
+  .bc-header-text p { font-size: 12px; opacity: 0.65; }
+  .bc-verdict {
+    padding: 14px 20px;
+    background: #edf4ea;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: #2d5a24;
+    font-weight: 500;
+  }
+  .bc-body { padding: 16px 20px; }
+  .bc-rec {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--snow);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .bc-rec-icon { font-size: 20px; flex-shrink: 0; }
+  .bc-rec-text strong { display: block; font-size: 14px; margin-bottom: 4px; color: var(--ink); }
+  .bc-rec-text span { color: var(--ink-mid); line-height: 1.5; }
+  .bc-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 14px; }
+  .bc-table th { text-align: left; padding: 6px 8px; color: var(--ink-light); font-weight: 500; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+  .bc-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); color: var(--ink-mid); vertical-align: top; }
+  .bc-table td:first-child { color: var(--ink); font-weight: 500; }
+  .bc-table td.saving { color: var(--moss); font-weight: 500; }
+  .bc-table tr.total td { font-weight: 500; color: var(--ink); border-top: 2px solid var(--border); border-bottom: none; }
+  .bc-table tr.total td.saving { color: var(--moss); font-size: 13px; }
+  .bc-footer {
+    background: var(--snow);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    font-size: 12px;
+    color: var(--ink-mid);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .bc-note { display: flex; align-items: flex-start; gap: 6px; }
+  .bc-note-dot { color: var(--amber); font-size: 14px; flex-shrink: 0; margin-top: -1px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 680px) {
+    .hero { padding: 32px 20px 28px; }
+    .main { padding: 20px 20px 40px; }
+    .booking-strip { padding: 12px 20px; }
+    .day-body { padding-left: 16px; }
+    .check-grid { grid-template-columns: 1fr; }
+    .tip-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; }
+    .hero-stats { gap: 20px; }
+    .accom-cards { grid-template-columns: 1fr; }
+    .phase-nav { flex-wrap: wrap; }
+    .phase-btn { flex: none; min-width: 45%; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Trip Dashboard · Ying's Norway 2026</div>
+    <h1>Norway, <em>May 1–13</em></h1>
+    <div class="hero-sub">Bergen · Aurland · Flåm · Lofthus · Oslo · 2 adults + 8-year-old twins</div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-val">13</span><span class="stat-label">Days</span></div>
+      <div class="stat"><span class="stat-val">5</span><span class="stat-label">Destinations</span></div>
+      <div class="stat"><span class="stat-val">4</span><span class="stat-label">Flights</span></div>
+      <div class="stat"><span class="stat-val">7</span><span class="stat-label">Days driving</span></div>
+      <div class="stat"><span class="stat-val">4</span><span class="stat-label">Travellers</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING STATUS STRIP -->
+<div class="booking-strip">
+  <div class="booking-strip-inner">
+    <div class="bk-item"><span class="bk-dot confirmed"></span><span class="bk-label">TG954/955</span> Bangkok–Oslo flights</div>
+    <span class="bk-sep">·</span>
+    <div class="bk-item"><span class="bk-dot confirmed"></span><span class="bk-label">DY608/631</span> Oslo–Bergen domestic</div>
+    <span class="bk-sep">·</span>
+    <div class="bk-item"><span class="bk-dot confirmed"></span><span class="bk-label">Avis #795970586</span> Electric SUV</div>
+    <span class="bk-sep">·</span>
+    <div class="bk-item"><span class="bk-dot pending"></span><span class="bk-label">Flåm Zipline</span> book ASAP</div>
+    <span class="bk-sep">·</span>
+    <div class="bk-item"><span class="bk-dot pending"></span><span class="bk-label">Flåmsbana train</span> book ASAP</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- DAY-BY-DAY -->
+  <div class="section-title">Day-by-day itinerary</div>
+
+  <!-- Phase filter -->
+  <div class="phase-nav">
+    <button class="phase-btn active" onclick="filterPhase('all')">All days</button>
+    <button class="phase-btn" onclick="filterPhase('bergen')">🏙 Bergen<span class="pb-loc">May 1–3</span></button>
+    <button class="phase-btn" onclick="filterPhase('aurland')">🏔 Aurland<span class="pb-loc">May 4–6</span></button>
+    <button class="phase-btn" onclick="filterPhase('lofthus')">🌿 Lofthus<span class="pb-loc">May 7–9</span></button>
+    <button class="phase-btn" onclick="filterPhase('oslo')">🌆 Oslo<span class="pb-loc">May 10–13</span></button>
+  </div>
+
+  <div class="days-grid">
+
+    <!-- DAY 1 -->
+    <div class="day-card" data-phase="bergen" id="day1">
+      <div class="day-header" onclick="toggleDay('day1')">
+        <div class="day-num"><span class="dn">1</span><span class="dd">Fri</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 1</span>
+          <span class="day-loc">Bangkok → Oslo → Bergen</span>
+          <div class="day-badges">
+            <span class="badge badge-fly">✈ Long-haul</span>
+            <span class="badge badge-travel">Transit</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot flight"></div>
+            <div class="tl-content">
+              <div class="tl-title">TG954 · Bangkok → Oslo Gardermoen</div>
+              <div class="tl-detail">Dep 00:05 → Arr 07:25 · 12h 20m · Seat 51J · 23kg bag · <span class="tl-ref">CONFIRMED</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot flight"></div>
+            <div class="tl-content">
+              <div class="tl-title">DY608 · Oslo → Bergen Airport</div>
+              <div class="tl-detail">Dep 10:40 → Arr 11:35 · 55min · Ref: BRGGCM · 3h 15min layover at OSL <span class="tl-ref">CONFIRMED</span></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Check in · Harald Hårfagres gate 15, Bergen</div>
+              <div class="tl-detail">Bergenhus, walkable historic area near Bryggen</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">Afternoon — easy & light (jetlag recovery)</div>
+              <div class="tl-detail">Bryggen Wharf walk · Fish market · Early dinner · Keep it very light for the twins — long travel day</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">✨ Optional add: Beffen Harbour Ferry (10 min, NOK 39)</div>
+              <div class="tl-detail">Charming electric ferry running since 1894 · Bryggen → Nykirkekaien with lovely harbour views · Perfect short treat for the twins after dinner · Runs Mon–Fri, departures every 10 min 07:30–16:10 · <a href="https://maps.google.com/?q=Beffen+ferry+Bergen" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Nearest supermarket (Day 1 supplies)</div>
+              <div class="tl-detail">Coop Extra, Håkonsgaten 36 — closest, open 7am–midnight Mon–Sat · <a href="https://maps.google.com/?q=Coop+Extra+Hakonsgaten+Bergen" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-card" data-phase="bergen" id="day2">
+      <div class="day-header" onclick="toggleDay('day2')">
+        <div class="day-num"><span class="dn">2</span><span class="dd">Sat</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 2</span>
+          <span class="day-loc">Bergen</span>
+          <div class="day-badges"><span class="badge badge-act">Activities</span></div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">Morning · Fløibanen Funicular → Mount Fløyen 🧒🧒 twins</div>
+              <div class="tl-detail">Troll Forest · Playground & café · Loop walk · <strong>✨ Zipline on top</strong> — both twins will love this, check availability at the summit · Also available: bike rental, guided hiking tours · <a href="https://maps.google.com/?q=Flobanen+Funicular+Bergen" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">14:00 · Bryggens Museum 🏛 🧒🧒 — open daily 10:00–17:00</div>
+              <div class="tl-detail"><strong>Right at Bryggen wharf — 5 min walk from Fløibanen base</strong> · Main exhibition "Below Ground" — thousands of medieval artefacts excavated from the ground beneath Bryggen, bringing 800-year-old Bergen to life · <strong>Adults NOK 85 with Bergen Card (50% off) · Children 0–17 free</strong> · Great framing for the twins: "this is what was buried under the streets of Bergen since the Vikings" · Also has a current temporary exhibition "Tales in Thread" — tapestry art · Allow 1–1.5 hrs · No booking needed, buy at the door or online · <a href="https://shop.bymuseet.no/Detaljer/EVENT/61/Inngang-Bryggens-Museum" class="map-btn" target="_blank">🔗 Buy tickets</a> · <a href="https://maps.google.com/?q=Bryggens+Museum+Bergen" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">15:45 · Troll Museum at Bryggen 🧒🧒</div>
+              <div class="tl-detail"><strong>2 min walk from Bryggens Museum — same Bryggen block</strong> · Norwegian folklore brought to life with AR technology and interactive exhibits · Huldrefolk, trolls, Norse mythology · 30–45 min · Perfect pairing: the twins saw the Troll Forest on Fløyen this morning — now they learn the stories behind the trolls · <a href="https://maps.google.com/?q=Troll+Museum+Bergen+Bryggen" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">16:45 · Ice cream + Bryggen harbour stroll</div>
+              <div class="tl-detail">Walk the UNESCO Bryggen wharf · Stop for ice cream along the harbour · Easy, relaxed end to a full day</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">Optional · Mostraumen Fjord Cruise (4h) — afternoon slot recommended</div>
+              <div class="tl-detail">Keep Fløyen morning relaxed, then cruise in the afternoon · Two near-identical options, both highly rated · ⚠️ Book in advance · <a href="https://www.stromma.com/en-no/bergen/sightseeing/fjord-cruises/mostraumen/" class="map-btn" target="_blank">🔗 Book</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-card" data-phase="bergen" id="day3">
+      <div class="day-header" onclick="toggleDay('day3')">
+        <div class="day-num"><span class="dn">3</span><span class="dd">Sun</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 3</span>
+          <span class="day-loc">Bergen</span>
+          <div class="day-badges"><span class="badge badge-act">Kids day 🧒</span><span class="badge badge-stay">All-weather</span></div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">10:00 · VilVite Science Centre 🧒🧒 twins — strongly recommended</div>
+              <div class="tl-detail">100+ hands-on experiments — human body, ocean, weather, energy · <strong>Weekend science show</strong>: explosions, flames & experiments, designed for ages 6+ — perfect for 8-year-olds · New "Loop" exhibition: nature cycles, live insects · Twins can compete across the 100+ exhibits — bilingual Norwegian/English · Open 10:00–17:00 · Thormøhlensgate 51 (15 min walk or Bybanen light rail to "Florida" stop) · <a href="https://www.vilvite.no/en" class="map-btn" target="_blank">🔗 Book VilVite</a></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">12:30 · Lunch near city centre</div>
+              <div class="tl-detail">Head back towards Fish Market area</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">14:00 · Bergen Aquarium 🧒🧒 via summer ferry</div>
+              <div class="tl-detail">Penguins, sea lions, crocodiles, European otters, snakes & feeding shows daily · <strong>✨ Take the summer boat M/F Vågen</strong> from Fish Market → Tollbodkaien (runs 11:00–16:00 in summer) — twins will love arriving by boat · Open 10am–6pm · <a href="https://www.akvariet.no/en" class="map-btn" target="_blank">🔗 Aquarium</a></div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">⚠️ Sunday — most supermarkets closed</div>
+              <div class="tl-detail">Only Bunnpris (Torggaten 7, 24/7) open. Stock up Saturday night. All three activities above are indoors — perfect rainy-day insurance.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Evening · Pack for road trip</div>
+              <div class="tl-detail">Early night — car pickup at 09:00 tomorrow at Bergen Airport · Ulriken Cable Car skipped: save it for a clear-sky day, Bergen in May is unpredictable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-card" data-phase="aurland" id="day4">
+      <div class="day-header" onclick="toggleDay('day4')">
+        <div class="day-num"><span class="dn">4</span><span class="dd">Mon</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 4</span>
+          <span class="day-loc">Bergen → Aurland</span>
+          <div class="day-badges">
+            <span class="badge badge-travel">Drive ~3h 45min with stops</span>
+            <span class="badge badge-act">3 stops</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot car"></div>
+            <div class="tl-content">
+              <div class="tl-title">🚗 Avis — Car pick-up · 09:00</div>
+              <div class="tl-detail">Bergen Airport (Flesland) · Car Rental Centre · Booking #795970586<br>Škoda Enyaq SUV — fully electric · Auto · 5 seats<br>Avis: 555 Flyplassvegen · +47 55 11 64 30</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Route: Bergen Airport → Aurland (~224km, ~3h 45min total incl. stops)</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Bergen Airport</span>
+                  <span class="route-arrow">→ E39/Rv7 →</span>
+                  <span class="route-node stop">🌊 Steinsdalsfossen</span>
+                  <span class="route-arrow">→ Rv7 →</span>
+                  <span class="route-node stop">🏔 Voss</span>
+                  <span class="route-arrow">→ E16 →</span>
+                  <span class="route-node stop">💧 Tvindefossen</span>
+                  <span class="route-arrow">→ E16 →</span>
+                  <span class="route-node stop">🚇 Gudvangen Tunnel</span>
+                  <span class="route-arrow">→ E16 →</span>
+                  <span class="route-node">Aurland</span>
+                </div>
+                <div class="route-meta">Via Rv7 over Kvamskogen · No ferries · EV chargers at Voss Stasjonsgarasjen · Different from Day 10 return route</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">Stop 1 · Steinsdalsfossen (~1h from Bergen Airport)</div>
+              <div class="tl-detail">Walk <em>behind</em> the waterfall without getting wet — one of Norway's most unique waterfall experiences · Easy flat path, perfect for twins · 20–30 min · Free entry · Toilets on site · <a href="https://maps.google.com/?q=Steinsdalsfossen+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">🍽 Lunch · Voss (~1h 30min from Bergen Airport)</div>
+              <div class="tl-detail"><strong>Vangen Café</strong> — best family lunch stop on this route · Locals' favourite: traditional Norwegian dishes, local farm meat, fresh fish from Bergen, homemade cakes · Well located near Voss train station with parking · Budget ~NOK 200–250/person · <strong>EV charge at Stasjonsgarasjen</strong> nearby (376 spaces, 23 charging points) — top up here if below 70% · <a href="https://maps.google.com/?q=Vangen+Cafe+Voss+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">Stop 2 · Tvindefossen (~10 min past Voss)</div>
+              <div class="tl-detail">152m roadside waterfall — tall, multi-tiered, pull-in parking right on the road · 5–10 min stretch stop · Great for a quick photo · Twins will be impressed · <a href="https://maps.google.com/?q=Tvindefossen+Waterfall+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Gudvangen Tunnel (11km) · through the mountain</div>
+              <div class="tl-detail">Norway's 3rd longest road tunnel · E16 goes straight through · Dramatic lit sections inside — twins may find it exciting · About 10 min to drive through</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">⚡ EV range note</div>
+              <div class="tl-detail">Bergen Airport → Aurland ≈ 224km · Enyaq range ~400km+ · Comfortable with margin · <strong>Top up at Voss Stasjonsgarasjen during lunch</strong> if battery below 70% — next reliable charger is Aurland/Flåm itself</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">~15:00 · Check in · Skjerdalsvegen 20, Aurland 5745</div>
+              <div class="tl-detail">Plug in car to charge overnight · Short walk in Aurland village · <strong>Dinner: Vangsgaarden Gastropub</strong> — the go-to dinner spot in Aurland, local food, relaxed atmosphere · <a href="https://maps.google.com/?q=Vangsgaarden+Gastropub+Aurland" class="map-btn" target="_blank">📍 Dinner map</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day-card" data-phase="aurland" id="day5">
+      <div class="day-header" onclick="toggleDay('day5')">
+        <div class="day-num"><span class="dn">5</span><span class="dd">Tue</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 5</span>
+          <span class="day-loc">Aurland / Flåm / Gudvangen</span>
+          <div class="day-badges">
+            <span class="badge badge-act">🚞 Train + Zipline!</span>
+            <span class="badge badge-act">⚔️ Vikings</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day route: Aurland → Flåm → Myrdal (full train) → Vatnahalsen (zipline) → Blomheller (train) → Flåm → Gudvangen → Aurland</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Aurland</span>
+                  <span class="route-arrow">→ 10 min →</span>
+                  <span class="route-node stop">🚞 Flåm</span>
+                  <span class="route-arrow">→ full train up →</span>
+                  <span class="route-node stop">🏔 Myrdal</span>
+                  <span class="route-arrow">→ train back down →</span>
+                  <span class="route-node stop">🤸 Vatnahalsen zip!</span>
+                  <span class="route-arrow">→ walk 2.5km →</span>
+                  <span class="route-node stop">🚞 Blomheller</span>
+                  <span class="route-arrow">→ train →</span>
+                  <span class="route-node stop">⚔️ Gudvangen</span>
+                  <span class="route-arrow">→ 20 min →</span>
+                  <span class="route-node">Aurland</span>
+                </div>
+                <div class="route-meta">One train trip covers everything · Full Kjosfossen + Huldra experience on the way up · Zipline on the way back down · No Day 6 train needed</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">08:00 · Drive to Flåm station · 10 min</div>
+              <div class="tl-detail">Early start to fit everything in · Arrive at Flåm station ~08:10 · <strong>Book seats in advance — first come gets window seats, seating is unassigned</strong> · <a href="https://www.flamsbana.no/en/" class="map-btn" target="_blank">🔗 Book Flåmsbana</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">08:30 · Flåmsbana — full route up: Flåm → Myrdal 🚞🧒🧒</div>
+              <div class="tl-detail">One of the world's steepest railways — climbs 867m in 20km · <strong>20 hand-carved tunnels</strong> including the Nåli Spiral Tunnel · Classic green 1940s carriages · ~1 hour to Myrdal · <br><br>
+              <strong>Kjosfossen stop (~5 min, on the way up):</strong> Everyone off the train · 93m thundering waterfall · <strong>A Huldra (Norse forest spirit) appears in a red dress singing on the rocks</strong> — twins will be mesmerised · Bring waterproofs — spray reaches the platform · <br><br>
+              🎯 Sit right-hand side going up for best early valley views · Count waterfalls as you climb — there are dozens · <a href="https://maps.google.com/?q=Flam+Railway+Station+Norway" class="map-btn" target="_blank">📍 Station map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">09:30 · Brief stop at Myrdal · then train back down</div>
+              <div class="tl-detail">Myrdal is a mountain junction at 867m — dramatic views · Short stop, stretch legs · Board the return train back towards Flåm · <strong>Get off at Vatnahalsen station</strong> — announce this to the conductor, it's a request stop · ~15 min ride from Myrdal to Vatnahalsen</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">10:00 · 🤸 Flåm Zipline — Scandinavia's longest 🧒🧒</div>
+              <div class="tl-detail"><strong>Get off at Vatnahalsen station → 2 min walk to zipline start</strong> · Fly 1,381m at up to 100 km/h with 305m height difference down to Kårdalen · Takes ~2 min in the air · Spectacular views of the valley and waterfalls · <br><br>
+              <strong>Minimum weight 25kg</strong> · No age limit · <strong>Prices: Adults NOK 850 · Children (under 15) NOK 600</strong> · Open daily 09:30–16:30 from 25 April · ⚠️ Book in advance and coordinate your zipline slot with Vatnahalsen train arrival time · <br><br>
+              <strong>Getting back to Flåm:</strong> Walk 2.5km (flat) to <strong>Blomheller station</strong> → take Flåmsbana down to Flåm · You'll need a separate ticket for this leg (Blomheller → Flåm) · <a href="https://www.vatnahalsen.no/en/flam-zipline" class="map-btn" target="_blank">🔗 Book Flåm Zipline</a> · <a href="https://en.flamsbana.no/timetable" class="map-btn" target="_blank">🔗 Flåmsbana timetable</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">11:30 · Back in Flåm · Quick lunch</div>
+              <div class="tl-detail"><strong>Flåm Bakeri</strong> or station café — quick bite before driving to Gudvangen · No need for a sit-down lunch today · <a href="https://maps.google.com/?q=Flam+station+cafe+Norway" class="map-btn" target="_blank">📍 Flåm station</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">12:30 · Drive to Gudvangen · 20 min via E16</div>
+              <div class="tl-detail">Pass through the dramatic Gudvanga Tunnel · Arrive in Gudvangen by the Nærøyfjord · EV chargers on site at Viking Valley</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:00 · Viking Valley — Njardarheimr ⚔️🏹 🧒🧒</div>
+              <div class="tl-detail"><strong>Living Viking village</strong> open daily 10:00–18:00 (Apr–Oct) · <strong>Axe throwing + archery</strong> — included, perfect for 9-year-olds · 45-min guided tour in English, starts every hour · Costumed Vikings demonstrate blacksmithing, weaving, cooking · Twins can roam 20+ buildings · Café on site · <a href="https://en.vikingvalley.no" class="map-btn" target="_blank">🔗 Viking Valley</a> · <a href="https://maps.google.com/?q=Njardarheimr+Viking+Village+Gudvangen" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">~16:00 · Drive back to Aurland · 20 min</div>
+              <div class="tl-detail"><strong>Dinner: Vangsgaarden Gastropub</strong> in Aurland village · Local cuisine, relaxed atmosphere · Or pick up groceries and eat at the cottage · <a href="https://maps.google.com/?q=Vangsgaarden+Gastropub+Aurland" class="map-btn" target="_blank">📍 Dinner map</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 6 -->
+    <div class="day-card" data-phase="aurland" id="day6">
+      <div class="day-header" onclick="toggleDay('day6')">
+        <div class="day-num"><span class="dn">6</span><span class="dd">Wed</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 6</span>
+          <span class="day-loc">Aurland / Undredal</span>
+          <div class="day-badges">
+            <span class="badge badge-stay">🌅 Scenic + relaxed</span>
+            <span class="badge badge-act">🐐 Undredal</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day route: Aurland → Stegastein → Undredal → Aurland</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Aurland</span>
+                  <span class="route-arrow">→ 15 min →</span>
+                  <span class="route-node stop">🌅 Stegastein</span>
+                  <span class="route-arrow">→ 20 min →</span>
+                  <span class="route-node stop">🐐 Undredal</span>
+                  <span class="route-arrow">→ 20 min →</span>
+                  <span class="route-node">Aurland</span>
+                </div>
+                <div class="route-meta">Light day · Total driving under 1hr · No train · Perfect recovery after big Day 5</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">09:00 · Stegastein Viewpoint 🧒🧒 — the wow moment</div>
+              <div class="tl-detail"><strong>Drive from Aurland village side</strong> — 8km, seven hairpin bends, ~15 min · Platform juts 30m out from the mountainside, <strong>650m above Aurlandsfjord</strong> · The illusion of floating above the fjord — look directly down at Aurland village · Twins will love walking to the glass edge — genuinely thrilling · 30–45 min · Free entry · <strong>Go early morning for best light and fewest people</strong> · World's 4th best public toilet (huge windows over the fjord — tell the twins, they'll love it) · <a href="https://maps.google.com/?q=Stegastein+Viewpoint+Aurland+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">10:30 · Undredal village 🐐🧒🧒 — hidden gem of the fjord</div>
+              <div class="tl-detail"><strong>~20 min drive from Stegastein</strong> — wind down from the mountain through a tunnel, emerge on the fjord at one of Norway's most picturesque villages · Population of around 100 people and 500 goats — goats outnumber people 5 to 1 · <br><br>
+              <strong>What to do:</strong><br>
+              🐐 <strong>Undredal Stølsysteri</strong> — taste and buy the award-winning white and brown goat cheese at Undredalsbui (village shop) or Undredal Bryggje/Café by the pier · The well-aged white cheese won best at Nordic Cheese Mongers 2023 · The most matured variety won gold at the World Cheese Awards 2018 · <br><br>
+              ⛪ <strong>Undredal Stave Church</strong> — built in 1147, seats only 40 people, Norway and Northern Europe's smallest stave church · Open 1 May–30 Sept, daily 11:00–18:00 · Guided tour NOK 100/person · <br><br>
+              🚶 Stroll the waterfront and tiny lanes · Buy goat sausage, cheese and local produce to bring home · Allow <strong>2–3 hours</strong> · <a href="https://maps.google.com/?q=Undredal+Norway" class="map-btn" target="_blank">📍 Undredal map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:00 · Lunch at Undredal Bryggje/Café</div>
+              <div class="tl-detail">Café right on the pier in Undredal · Serves local food — goat cheese dishes, goat stew, goat salami · Beautiful fjord setting · Eat here before driving back rather than going to Flåm · <a href="https://maps.google.com/?q=Undredal+Bryggje+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">14:30 · Back at Aurland cottage — relax by the fjord</div>
+              <div class="tl-detail">Relaxed afternoon — important recovery after big Day 5 · Walk around Aurland village · Stop at <strong>Marianne Bakeri</strong> for coffee and cake · <strong>Dinner: Vangsgaarden Gastropub</strong> or cook at the cottage · Charge car overnight for tomorrow's long drive to Lofthus · <a href="https://maps.google.com/?q=Marianne+Bakeri+Aurland" class="map-btn" target="_blank">📍 Marianne Bakeri</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 7 -->
+    <div class="day-card" data-phase="lofthus" id="day7">
+      <div class="day-header" onclick="toggleDay('day7')">
+        <div class="day-num"><span class="dn">7</span><span class="dd">Thu</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 7</span>
+          <span class="day-loc">Aurland → Eidfjord → Lofthus</span>
+          <div class="day-badges">
+            <span class="badge badge-travel">Drive ~3h</span>
+            <span class="badge badge-act">🌊 Waterfall + orchards</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Route: Aurland → Lærdal Tunnel → Hardanger Bridge → Eidfjord → Vøringsfossen → Lofthus</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Aurland</span>
+                  <span class="route-arrow">→ E16 Tunnel →</span>
+                  <span class="route-node stop">🌉 Hardanger Bridge</span>
+                  <span class="route-arrow">→ Rv7 →</span>
+                  <span class="route-node stop">🏛 Nature Centre</span>
+                  <span class="route-arrow">→ 20 min →</span>
+                  <span class="route-node stop">🌊 Vøringsfossen</span>
+                  <span class="route-arrow">→ Rv7 + Rv13 →</span>
+                  <span class="route-node stop">🍽 Lunch Eidfjord</span>
+                  <span class="route-arrow">→ Rv13 →</span>
+                  <span class="route-node">Lofthus</span>
+                </div>
+                <div class="route-meta">Total ~165km · ~3h pure driving · Allow 6–7hrs with stops · EV chargers at Eidfjord village</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">09:00 · Depart Aurland · Breakfast first at Marianne Bakeri</div>
+              <div class="tl-detail">One last stop at <strong>Marianne Bakeri & Kafé</strong> in Aurland village before leaving — the best bakery in the area, great cinnamon rolls · Then head east on E16 toward Lærdal Tunnel · <a href="https://maps.google.com/?q=Marianne+Bakeri+Aurland" class="map-btn" target="_blank">📍 Bakery map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">En-route · Lærdal Tunnel (24.5km) + Hardanger Bridge</div>
+              <div class="tl-detail"><strong>Lærdal Tunnel</strong> — world's longest road tunnel, dramatic blue and yellow lit caverns inside · Twins will find it genuinely impressive — build it up before entering · About 20 min to drive through · Then south on Rv50 toward Eidfjord · <strong>Hardanger Bridge</strong> — Norway's longest suspension bridge (1,380m), dramatic crossing over the Hardangerfjord with mountain views · Pull over at the viewing area on the far side for photos · <a href="https://maps.google.com/?q=Hardanger+Bridge+Norway" class="map-btn" target="_blank">📍 Bridge map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">~11:00 · Norwegian Nature Centre — Hardanger 🧒🧒</div>
+              <div class="tl-detail"><strong>Øvre Eidfjord, 7km from Eidfjord village</strong> · Interactive 3-floor exhibition on Norwegian nature, geology, fjords, wildlife · <strong>Panoramic cinema: 21×4m screen</strong> — drone film of Hardanger landscape through the seasons, stunning for kids · Aquarium inside · Multilingual (English) · 60–75 min · NOK 180 adults / NOK 100 children · <a href="https://maps.google.com/?q=Norwegian+Nature+Centre+Eidfjord" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">~12:30 · Vøringsfossen 🌊 🧒🧒 — Norway's most visited waterfall</div>
+              <div class="tl-detail"><strong>20 min drive up Måbødalen valley from Nature Centre</strong> · 182m free fall — thundering with snowmelt in May, at its most powerful · <strong>New 2020 steel bridge: 99 steps, spanning 47m across the gorge above the falls</strong> — walking it is breathtaking and totally safe, twins will love it · Multiple viewpoints, metal walkways, fenced cliff edges · Allow 45–60 min · Fossli Hotel café at the top: waffles, coffee, cake with views · Warm/windproof layer recommended — it's windy and damp at the falls · Free entry to the viewpoints · <a href="https://maps.google.com/?q=Voringsfossen+Waterfall+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">~14:00 · Lunch in Eidfjord village</div>
+              <div class="tl-detail">Drive back down to Eidfjord (20 min) · <strong>Vik Bakeri</strong> — recommended by travellers as the best quick lunch stop in Eidfjord, fresh baked goods · Or <strong>DolceVidda Iskremeri</strong> by the pier for Italian ice cream after a long morning (Italian-run, genuinely good) · Charge the EV at Eidfjord while you eat · <a href="https://maps.google.com/?q=Eidfjord+Norway" class="map-btn" target="_blank">📍 Eidfjord map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">~15:00 · Drive Eidfjord → Lofthus along Sørfjorden (~45 min)</div>
+              <div class="tl-detail">Follow Rv13 south along Sørfjorden — one of Norway's most beautiful fjord drives · In early May: <strong>fruit orchards in full blossom</strong> all along the road, apple and cherry trees · Pink and white flowers against the dark fjord water and snow-capped mountains · Pull over anywhere for photos — it's exceptional in May · Pass through Kinsarvik village</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">~16:00 · Check in · Ullensvangvegen 918, Ullensvang 5781</div>
+              <div class="tl-detail">Farm environment — twins explore · Confirm EV charging with host · <strong>Grocery run</strong> in Lofthus or Kinsarvik (stock up for 3 nights of self-catering)</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">Evening · Lofthus orchard walk + dinner</div>
+              <div class="tl-detail"><strong>Short evening walk through the orchard terraces</strong> behind the village — easy stone path, blossom in May, fjord views · <strong>Siderhuset Ola K</strong> is the award-winning local restaurant in Lofthus if you want a proper dinner out · Or cook at the farm stay · <a href="https://maps.google.com/?q=Lofthus+Ullensvang+Norway" class="map-btn" target="_blank">📍 Lofthus map</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 8 -->
+    <div class="day-card" data-phase="lofthus" id="day8">
+      <div class="day-header" onclick="toggleDay('day8')">
+        <div class="day-num"><span class="dn">8</span><span class="dd">Fri</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 8</span>
+          <span class="day-loc">Lofthus / Kinsarvik</span>
+          <div class="day-badges">
+            <span class="badge badge-stay">🌸 Blossom day</span>
+            <span class="badge badge-act">🧒🧒 Waterfall hike</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🍒 Fruit picking — not available in May</div>
+              <div class="tl-detail">Hardanger fruit picking season: strawberries/cherries from <strong>early July</strong>, apples/pears <strong>September–October</strong>. In May the trees are in blossom — spectacular to walk through, but nothing to pick yet. <strong>Good news:</strong> farm shops are open year-round selling cider, apple juice, jams and local cheese — you can buy and taste even if you can't pick. Roadside stalls appear later in summer.</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day plan: Lofthus Fruit Trail (morning) + Husedalen (afternoon)</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Lofthus</span>
+                  <span class="route-arrow">→ walk →</span>
+                  <span class="route-node stop">🌸 Fruit Trail</span>
+                  <span class="route-arrow">→ farm shop →</span>
+                  <span class="route-node stop">🍽 Lunch</span>
+                  <span class="route-arrow">→ 10 min drive →</span>
+                  <span class="route-node stop">🌊 Husedalen</span>
+                  <span class="route-arrow">→ optional →</span>
+                  <span class="route-node stop">🏛 Agatunet</span>
+                  <span class="route-arrow">→</span>
+                  <span class="route-node">Lofthus</span>
+                </div>
+                <div class="route-meta">Mostly on foot · Easy driving day · Total ~10km driving</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">09:00 · Hardanger Fruit Trail 🌸 🧒🧒</div>
+              <div class="tl-detail"><strong>Start at Lofthus supermarket</strong> — 6km easy loop through fruit farm orchards in full blossom · In May the cherry, plum, pear and apple trees are all white-pink flowers against the dark fjord and snow-capped mountains — one of Norway's most photographed sights · Easy paved and gravel paths, mostly flat, accessible all ages · <strong>Allow 1.5–2hrs</strong> · Stop at a farm shop on the route for local cider, juice and jam to take home · <a href="https://maps.google.com/?q=Lofthus+Fruit+Trail+Ullensvang+Norway" class="map-btn" target="_blank">📍 Trail map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">11:30 · Lunch · Fløy Bakeri, Lofthus</div>
+              <div class="tl-detail">Local bakery in Lofthus — recommended cinnamon rolls (skillingsboller) and pastries · Eat outside with fjord views · Or picnic: buy supplies from the supermarket and eat on the fjord promenade · <a href="https://maps.google.com/?q=Floy+Bakeri+Lofthus+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:00 · Husedalen Waterfall Valley 🌊 🧒🧒 — afternoon highlight</div>
+              <div class="tl-detail"><strong>10 min drive north to Kinsarvik</strong> · Valley with four massive waterfalls on the Kinso River, dropping 840m total · <br><br>
+              <strong>For the twins: walk to Tveitafossen (first waterfall)</strong> — graded <em>green/easy</em>, ~4.5km one way, 1–1.5hrs · Flat gravel path, doable for 8-year-olds · Spectacular first waterfall with good picnic spots · Turn back here for a ~3hr round trip total · <br><br>
+              Full trail to all 4 waterfalls is 6+ hours and steep — skip that section for today · Waterfall flow is at its highest in May from snowmelt · Free entry · Parking NOK 185 · Bring waterproofs — mist from the falls · <a href="https://maps.google.com/?q=Husedalen+Valley+Kinsarvik+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">~16:00 · Optional · Agatunet Historic Village (~10 min drive)</div>
+              <div class="tl-detail">Medieval Norwegian cluster farm — oldest building from 1220 · <strong>One of the best preserved historic farm clusters in Western Norway</strong> · Guided tours available · Fascinating for the whole family, not in a museum-y way — you wander around real 800-year-old buildings · 45–60 min · <a href="https://maps.google.com/?q=Agatunet+Ullensvang+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Evening · Back at Lofthus · Relax + dinner</div>
+              <div class="tl-detail"><strong>Siderhuset Ola K</strong> — award-winning local restaurant in Lofthus, Hardanger cider focus, local ingredients · Book ahead · Or cook at the farm stay with produce from the farm shops · <a href="https://maps.google.com/?q=Siderhuset+Ola+K+Lofthus" class="map-btn" target="_blank">📍 Siderhuset map</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 9 -->
+    <div class="day-card" data-phase="lofthus" id="day9">
+      <div class="day-header" onclick="toggleDay('day9')">
+        <div class="day-num" style="background:var(--amber);"><span class="dn">9</span><span class="dd">Sat</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 9 · 🎂 Twins' 9th Birthday!</span>
+          <span class="day-loc">Lofthus / Hardanger</span>
+          <div class="day-badges">
+            <span class="badge badge-act">🎂 Birthday!</span>
+            <span class="badge badge-act">🚤 RIB safari</span>
+            <span class="badge badge-act">🌊 Waterfalls</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day plan: RIB Fjord Safari (morning) + Waterfall Circuit (afternoon)</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Lofthus</span>
+                  <span class="route-arrow">→ pier →</span>
+                  <span class="route-node stop">🚤 RIB safari</span>
+                  <span class="route-arrow">→ lunch →</span>
+                  <span class="route-node stop">🍽 Lofthus</span>
+                  <span class="route-arrow">→ 25 min drive →</span>
+                  <span class="route-node stop">🌊 Låtefossen</span>
+                  <span class="route-arrow">→ 30 min →</span>
+                  <span class="route-node stop">🌊 Skjervsfossen</span>
+                  <span class="route-arrow">→ home →</span>
+                  <span class="route-node">Pack + charge</span>
+                </div>
+                <div class="route-meta">Total driving ~80km · Twins' 9th birthday — make it unforgettable</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">10:00 · 🎂 Birthday activity: RIB Fjord Safari — Trolltunga Active 🚤 🧒🧒</div>
+              <div class="tl-detail"><strong>Departs from Hotel Ullensvang pier in Lofthus</strong> — walkable or 2 min drive from your stay · <strong>Minimum age: 8 years — the twins turn 9 today, they qualify perfectly</strong> · Duration ~1.5hrs · Open from May 1 · Speed boat up to 83 km/h racing through the Hardangerfjord · Guide covers the fjord's cultural and natural history · <strong>Spot porpoises, golden eagles and seals</strong> — wildlife especially active in May · Views of Folgefonna glacier, steep cliffs and waterfalls from the water · Floatation suits provided · Runs in all weather · <strong>⚠️ Book well in advance — Saturday birthday = book now</strong> · When booking, mention it's the twins' birthday — guides often acknowledge it · <a href="https://www.trolltunga-active.com/activities/rib-boat-fjord-safari" class="map-btn" target="_blank">🔗 Book RIB safari</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">12:00 · 🎂 Birthday lunch in Lofthus</div>
+              <div class="tl-detail">Back at the pier by noon · <strong>Siderhuset Ola K</strong> — award-winning local restaurant, book ahead and mention the birthday · Or a fjord-side picnic with something special from the bakery · <strong>Birthday cake tip:</strong> Fløy Bakeri in Lofthus makes cakes — call or visit the morning before to ask if they can do something for the occasion, or pick up birthday pastries · Last chance for local Hardanger cider tasting before leaving tomorrow</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:30 · Låtefossen Twin Waterfall 🌊 🧒🧒</div>
+              <div class="tl-detail"><strong>~25 min drive south toward Odda on Rv13</strong> · <strong>Double waterfall — two separate streams merging</strong>, 165m drop, thundering through a historic 19th-century stone arch bridge · <strong>Get within metres of the base</strong> — flat short walk from the car park, easy for twins · Spray showers the road as you stand beneath · May flow is powerful from snowmelt · Free entry · 20–30 min stop · <a href="https://maps.google.com/?q=Latefossen+Waterfall+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">14:30 · Skjervsfossen Waterfall 🌊 🧒🧒</div>
+              <div class="tl-detail"><strong>~30 min drive north on Rv13 / Skjervet scenic road toward Granvin</strong> · Part of the Hardanger National Scenic Route · Two cascades dropping 150m with paths, stairs and multiple viewpoints · <strong>Walk all the way to the foot and get soaked</strong> — the twins will love standing in the mist · Unique toilet building with panoramic window view of the falls · Picnic benches · Free entry · 30–45 min · <a href="https://maps.google.com/?q=Skjervsfossen+Waterfall+Norway" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">~16:30 · Back to Lofthus — birthday evening 🎂</div>
+              <div class="tl-detail"><strong>Birthday dinner at Siderhuset Ola K</strong> — book in advance, mention the occasion · Or cook a special meal at the farm stay with local ingredients from the farm shops · Let the twins choose the evening activity — short fjord walk, play at the farm, star-gazing (good darkness in early May by 22:00) · <strong>Present tip:</strong> small Norwegian souvenirs from the trip work well — Hardanger cider bottle, a troll from the Troll Museum in Bergen, or a Viking craft from Gudvangen</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Late evening · Pack + charge car ⚡</div>
+              <div class="tl-detail"><strong>~160km drive to Bergen Airport tomorrow, drop-off 13:00 · Depart Lofthus by 09:00</strong> · Pack after dinner · Plug in car to charge overnight — full charge needed for Bergen Airport drive · Lay out clothes for the next leg: Bergen → Oslo → 3 nights in Gamle Oslo</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">💡 If energy is low: keep it simple — it's still their birthday</div>
+              <div class="tl-detail">RIB safari + birthday lunch + birthday dinner is already a perfect day. Skip the waterfall drive if the family needs rest after 8 big days. A slow fjord afternoon followed by a special dinner is more than enough for a memorable 9th birthday in Norway.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 10 -->
+    <div class="day-card" data-phase="oslo" id="day10">
+      <div class="day-header" onclick="toggleDay('day10')">
+        <div class="day-num"><span class="dn">10</span><span class="dd">Sun</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 10</span>
+          <span class="day-loc">Lofthus → Bergen → Oslo</span>
+          <div class="day-badges">
+            <span class="badge badge-travel">Drive + fly</span>
+            <span class="badge badge-act">🌆 Oslo arrives</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day route: Lofthus → Rv13 → Rv7 → Bergen Airport → fly Oslo → Bjørvika</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Lofthus 09:00</span>
+                  <span class="route-arrow">→ Rv13/Rv7 direct →</span>
+                  <span class="route-node stop">🚗 Bergen Airport 12:30</span>
+                  <span class="route-arrow">→ DY631 →</span>
+                  <span class="route-node stop">✈ Oslo 15:25</span>
+                  <span class="route-arrow">→ walk →</span>
+                  <span class="route-node">Oslo stay</span>
+                </div>
+                <div class="route-meta">Drive ~160km · 2h 30min · No stops · Drop-off 13:00 sharp · No ferry needed on this route</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">⏰ 09:00 · Depart Lofthus — no stops, straight run to Bergen Airport</div>
+              <div class="tl-detail">~2h 30min drive to Bergen Airport · <strong>Car drop-off deadline 13:00 — departing at 09:00 gives a comfortable 1h 30min buffer</strong> for traffic, fuel stop or any delays · Route: Rv13 north → Rv7 west over Kvamskogen → E16 into Bergen · No scenic detours on this leg · Charge should be full from overnight · Check tyre pressure and return the car in clean condition to avoid extra charges</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot car"></div>
+            <div class="tl-content">
+              <div class="tl-title">12:30 · 🚗 Avis — Car return · Bergen Airport (Flesland)</div>
+              <div class="tl-detail">Bergen Airport (Flesland) · Car Rental Centre · Booking #795970586 · <strong>Target arrival 12:30</strong> — gives 30 min buffer before 13:00 deadline · Allow 30–40 min after drop-off to reach terminal, check in, security and gate · DY631 departs at 14:30 — comfortable timing if you arrive by 12:30</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot flight"></div>
+            <div class="tl-content">
+              <div class="tl-title">14:30 · DY631 · Bergen → Oslo Airport</div>
+              <div class="tl-detail">Dep 14:30 → Arr 15:25 · 55min · Ref: BRGGCM <span class="tl-ref">CONFIRMED</span> · Shortest possible packing for this leg — heavy luggage already checked</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">16:00 · Check in · Sankt Halvards gate 22, Gamle Oslo 0192</div>
+              <div class="tl-detail">~10 min from Oslo Central Station by taxi or tram · Bjørvika/Sørenga waterfront is a 10–15 min walk from your stay · Drop bags, freshen up · <strong>Oslo sunset in May: ~21:30</strong> — plenty of evening light for a long waterfront walk</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">17:30 · Oslo Opera House — walk the roof 🧒🧒 free</div>
+              <div class="tl-detail"><strong>10 min walk from your accommodation</strong> · The Opera House rises from the fjord like a glacier — its entire sloped marble roof is a public walkway · Free to climb, open all hours · <strong>Kids love the angled surface</strong> — it's part climbing frame, part viewing platform · Views over Oslofjord, Akershus Fortress and the Barcode towers · Grippy shoes recommended — the marble is slippery when wet · Great first impression of Oslo, no queues needed · <a href="https://maps.google.com/?q=Oslo+Opera+House" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">18:30 · Sørenga waterfront walk + dinner 🧒🧒</div>
+              <div class="tl-detail"><strong>Walk from Opera House across pedestrian bridge to Sørenga</strong> — 5 min · Sørenga has boardwalks, a shallow sandy pool and a diving platform along a sheltered channel — the twins can dip feet in the fjord (brave ones can swim, it's May) · <strong>Dinner options along Sørenga:</strong> diverse restaurants from casual pizza and burgers to fresh seafood · Barcode area behind the Opera has everything from bakeries to ramen if you prefer · Easy, relaxed first Oslo evening — no need to rush · <a href="https://maps.google.com/?q=Sorenga+Oslo" class="map-btn" target="_blank">📍 Sørenga map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">💡 Sunday note — most shops closed, but Bjørvika restaurants are open</div>
+              <div class="tl-detail">Norway's Sunday trading restrictions apply, but the Bjørvika/Sørenga restaurant strip operates normally on Sundays. The Opera House roof, Sørenga waterfront and the harbour promenade are all free and always accessible.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 11 -->
+    <div class="day-card" data-phase="oslo" id="day11">
+      <div class="day-header" onclick="toggleDay('day11')">
+        <div class="day-num"><span class="dn">11</span><span class="dd">Mon</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 11</span>
+          <span class="day-loc">Oslo</span>
+          <div class="day-badges">
+            <span class="badge badge-act">🗿 Sculptures</span>
+            <span class="badge badge-act">🚢 Bygdøy museums</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day plan: Vigeland (morning) → ferry to Bygdøy (afternoon) → Aker Brygge (evening)</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Oslo stay</span>
+                  <span class="route-arrow">→ tram 12 →</span>
+                  <span class="route-node stop">🗿 Vigeland Park</span>
+                  <span class="route-arrow">→ tram + walk →</span>
+                  <span class="route-node stop">⛴ City Hall pier</span>
+                  <span class="route-arrow">→ 10 min ferry →</span>
+                  <span class="route-node stop">🚢 Fram + Kon-Tiki</span>
+                  <span class="route-arrow">→ ferry back →</span>
+                  <span class="route-node stop">🍽 Aker Brygge</span>
+                </div>
+                <div class="route-meta">All on public transport · Tram 12 to Vigeland · Bus 30 or ferry to Bygdøy · Oslo Pass worth buying for a day of this</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">⚠️ Viking Ship Museum — closed until 2027</div>
+              <div class="tl-detail">The Viking Ship Museum at Bygdøy has been closed since 2021 for a major rebuild and will reopen as the <strong>Museum of the Viking Age in 2027</strong> — not open during your visit. <strong>Replacements:</strong> Fram Museum and Kon-Tiki Museum are both open and excellent for kids. Small Viking Age artifacts are also on display at the <strong>Historical Museum</strong> downtown (free with Oslo Pass).</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">09:30 · Vigeland Sculpture Park 🧒🧒 free · Frogner Park</div>
+              <div class="tl-detail"><strong>Take tram 12 to Vigelandsparken stop</strong> — 25 min from city centre · World's largest sculpture park by a single artist: 212 bronze and granite figures showing human life from birth to death · <strong>Twins can climb directly on the sculptures</strong> — officially allowed and encouraged · Hunt for Sinnataggen (The Angry Boy) — the most famous single statue · Find the <strong>labyrinth</strong> in the park and challenge the twins to solve it (3km-long stone path) · The Monolith column — 14m tall, 121 human figures carved from a single block · Large playground near the main entrance · Café for coffee/breakfast · Allow 1.5–2 hrs · Free, open 24/7 · <a href="https://maps.google.com/?q=Vigeland+Sculpture+Park+Oslo" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">11:30 · Lunch near City Hall / Aker Brygge</div>
+              <div class="tl-detail">Tram back to city centre · Wide choice of casual lunch spots along Aker Brygge waterfront · Or grab something quick near Oslo City Hall before the ferry · <strong>Aim to catch the 12:30–13:00 ferry</strong> to leave the afternoon free for both museums</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot cruise"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:00 · Bygdøy ferry from City Hall pier (Rådhusbrygge 3) 🧒🧒</div>
+              <div class="tl-detail"><strong>10-min scenic harbour crossing</strong>, departs every 20 min · NOK 50 adults / 25 children · Views of Akershus Fortress and Oslo skyline en route · Running from mid-March to October · Kids love the short fjord ferry · Get off at <strong>Bygdøynes stop</strong> — Fram and Kon-Tiki are right there · <a href="https://maps.google.com/?q=Bygdoy+ferry+Oslo+City+Hall" class="map-btn" target="_blank">📍 Pier map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:15 · Fram Museum 🚢 🧒🧒 — 9:30–18:00 Mon–Sun</div>
+              <div class="tl-detail">The world's strongest wooden ship — <strong>you can board and explore the entire Fram</strong>, the polar exploration vessel that reached the farthest south and north of any ship · Walk through the original crew cabins, engine room and deck exactly as the explorers left it · Northern lights show in the theatre · Interactive displays on Nansen and Amundsen · <strong>90–120 min</strong> · Twins will love climbing around the ship and imagining life in Antarctic ice · <a href="https://frammuseum.no" class="map-btn" target="_blank">🔗 Fram Museum</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">15:00 · Kon-Tiki Museum 🌊 🧒🧒 — 10:00–18:00 Mon–Sun</div>
+              <div class="tl-detail">99m across the Pacific on a balsa raft — <strong>the original Kon-Tiki raft is inside</strong>, full size · Aquarium beneath the raft with a 10m whale shark model · Replica of Easter Island cave · Thor Heyerdahl's story told with boats, maps and artifacts · <strong>60–90 min</strong> · Next door to Fram — walk between them in 2 min · <a href="https://www.kon-tiki.no/en" class="map-btn" target="_blank">🔗 Kon-Tiki Museum</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">💡 Oslo Pass — worth buying for Day 11</div>
+              <div class="tl-detail">A 24h Oslo Pass covers free entry to both Fram and Kon-Tiki, free public transport (trams + buses), free ferry to Bygdøy, and discounts at many restaurants · Buy at the tourist office near the Opera House or online · 24h: NOK 445 adult / 220 child · Family of 4 saves significantly vs paying separately · <a href="https://www.visitoslo.com/en/oslo-pass/" class="map-btn" target="_blank">🔗 Oslo Pass</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">💡 Option: swap Vigeland for indoor skydiving — wind tunnel near Oslo 🧒🧒</div>
+              <div class="tl-detail">If the twins are excited by VossVind-style flying, two wind tunnel venues operate near Oslo. <strong>Vigeland is the most droppable item</strong> on this day — beautiful but not unique after 12 days in Norway. Replace it with a morning wind tunnel session, then do Bygdøy in the afternoon as planned.
+                <br><br>
+                <strong>Option A — FlyTribe Oslo (Gardermoen) 🏆 Bigger tunnel, same as VossVind technology</strong><br>
+                Norway's largest wind tunnel · <strong>Same ISG manufacturer as VossVind</strong> · 4.3m diameter, 5m bulletproof glass, up to 300 km/h · AR climbing wall + VR simulators also on site · <strong>Age 5+ ✓</strong> · Located at Balder Allé 16, Gardermoen — 10 min from Oslo Airport, ~30 min from city centre · ⚠️ <strong>Verify open before booking</strong> — venue recently changed ownership (was Modern Activity Center, now FlyTribe) · <a href="https://flytribe.no/en/home/" class="map-btn" target="_blank">🔗 FlyTribe Oslo</a>
+                <br><br>
+                <strong>Option B — Megafly Vindtunnel (Lørenskog) ✅ Safer bet, closer in, 5★ rated</strong><br>
+                Norway's highest-rated wind tunnel (5/5 Google) · Smaller tunnel, lower prices · Located at Skoglistubben 21, Lørenskog — 15–20 min from central Oslo by train + 10 min walk, or taxi · Inside the MegaFun family amusement centre (bonus activities) · <strong>Age 5+ ✓</strong> · No recent ownership issues — confirmed operational · Reviewed positively for kids aged 9–12 · <a href="https://www.megafly.no/" class="map-btn" target="_blank">🔗 Megafly Vindtunnel</a>
+                <br><br>
+                📋 <strong>Recommendation:</strong> Call/email FlyTribe first to confirm they're open. If confirmed, go there for the better tunnel. If uncertain, Megafly is the reliable fallback. Either option: book in advance, arrive 40–45 min before flight time, sessions ~1.5 hrs total including briefing.
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">17:00 · Ferry back to Aker Brygge / dinner</div>
+              <div class="tl-detail">Take the ferry back from Bygdøynes to City Hall pier · <strong>Aker Brygge and Tjuvholmen</strong> — Oslo's most popular waterfront dining strip, 5 min walk from the pier · Good mix of seafood, Norwegian, Asian and family-friendly options with outdoor seating on the fjord · Tjuvholmen sculpture park is a pleasant after-dinner walk along the water · <a href="https://maps.google.com/?q=Aker+Brygge+Oslo" class="map-btn" target="_blank">📍 Aker Brygge map</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 12 -->
+    <div class="day-card" data-phase="oslo" id="day12">
+      <div class="day-header" onclick="toggleDay('day12')">
+        <div class="day-num"><span class="dn">12</span><span class="dd">Tue</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 12</span>
+          <span class="day-loc">Oslo</span>
+          <div class="day-badges">
+            <span class="badge badge-act">🎨 MUNCH</span>
+            <span class="badge badge-act">🏰 Akershus (Frozen castle!)</span>
+          </div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">🗺 Day plan: MUNCH (morning) → Karl Johans Gate walk → Royal Palace + Guard → Akershus Fortress (afternoon) → farewell dinner</div>
+              <div class="route-strip">
+                <div class="route-steps">
+                  <span class="route-node">Oslo stay</span>
+                  <span class="route-arrow">→ 10 min walk →</span>
+                  <span class="route-node stop">🎨 MUNCH Museum</span>
+                  <span class="route-arrow">→ tram/walk →</span>
+                  <span class="route-node stop">🏛 Karl Johans Gate</span>
+                  <span class="route-arrow">→ walk up →</span>
+                  <span class="route-node stop">🏰 Royal Palace 13:30</span>
+                  <span class="route-arrow">→ walk down →</span>
+                  <span class="route-node stop">⚔️ Akershus Fortress</span>
+                  <span class="route-arrow">→ walk →</span>
+                  <span class="route-node">Farewell dinner</span>
+                </div>
+                <div class="route-meta">Almost entirely on foot · Compact city centre · Last full day — keep it easy</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">⚠️ Book MUNCH Museum tickets now</div>
+              <div class="tl-detail">Timed entry — pre-booking strongly recommended even outside peak season · <strong>Adults ~220 NOK · Under 18 free</strong> · Book the 10:00 time slot · <a href="https://www.munch.no/en/buy-tickets/" class="map-btn" target="_blank">🔗 Book MUNCH tickets</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">10:00 · MUNCH Museum 🎨 🧒🧒 — 10:00–18:00 Tue</div>
+              <div class="tl-detail"><strong>10-min walk from your accommodation</strong> — the leaning 13-storey tower on the Bjørvika waterfront · World's largest collection of Edvard Munch's work: ~27,000 pieces, 3 versions of The Scream · <strong>Family workshops at weekends</strong> — hands-on drawing and stamping spaces for kids; check on weekday availability · Top floor bar/café Bistro Tolvte has spectacular fjord views over the ferry lanes — good for a mid-visit coffee · Interactive "MUNCH Shadows" rooms recreate his home and studio · <strong>Allow 2 hrs</strong> · Photography allowed without flash · Lockers for large bags · <a href="https://maps.google.com/?q=MUNCH+Museum+Oslo" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">12:30 · Lunch on Karl Johans Gate</div>
+              <div class="tl-detail">Tram or 20-min walk from MUNCH to Karl Johans Gate, Oslo's main pedestrian boulevard · Runs from Oslo Central Station up to the Royal Palace · <strong>Freia chocolate shop</strong> — Norway's most famous chocolate brand, great for twins · Café Christiania or Grand Café for Norwegian open sandwiches (smørbrød) · <strong>Time the Royal Palace visit for 13:30 to see the Changing of the Guard</strong> — the one thing to aim for this afternoon</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">13:30 · Royal Palace — Changing of the Guard 🧒🧒</div>
+              <div class="tl-detail"><strong>Daily at 13:30</strong> — King's Guard parade with music on the palace forecourt · Walk up Karl Johans Gate from Parliament to the palace (10 min uphill) · <strong>Palace Park (Slottsparken) is free</strong> — large green park surrounding the palace, statues and tree-lined paths · Palace interior tours only run late June–mid August — no interior access in May · 20–30 min for the ceremony, then stroll down via the park's east side toward Akershus · <a href="https://maps.google.com/?q=Royal+Palace+Oslo" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">14:30 · Akershus Fortress — The Real Frozen Castle 🏰❄️ 🧒🧒 free</div>
+              <div class="tl-detail"><strong>Tell the twins:</strong> this is the real-life castle that inspired Arendelle in Disney's Frozen — Norwegian animators based the design directly on Akershus · <strong>Fortress grounds free, open daily 06:00–21:00</strong> · Walk the medieval ramparts above the Oslofjord — sweeping views back over the city · Tunnels, towers, dungeons, cannon emplacements — kids love it · Optional castle interior (NOK 150) adds ~1hr and includes guided tour and Royal Mausoleum · The Norwegian Resistance Museum inside the grounds (WWII occupation story) is one of Oslo's best small museums — 45–60 min · <a href="https://maps.google.com/?q=Akershus+Fortress+Oslo" class="map-btn" target="_blank">📍 Map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">16:30 · Walk back via Oslo City Hall + waterfront</div>
+              <div class="tl-detail">Akershus is a 5 min walk from Oslo City Hall — exterior is free, Nobel Peace Prize ceremony held here · Continue along the Aker Brygge promenade or back through Pipervika toward the city centre · <strong>Oslo sunset ~21:30</strong> — plenty of golden light in the evening</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-title">18:30 · 🍽 Farewell dinner — make it a good one</div>
+              <div class="tl-detail"><strong>Recommendations:</strong> Aker Brygge / Tjuvholmen waterfront — outdoor tables, fjord views, great for families in May · <strong>Lofoten Fiskerestaurant</strong> (Stranden 75, Aker Brygge) — classic Norwegian seafood on the harbour · Or <strong>Vingen Bar & Kitchen</strong> for casual Norwegian-Nordic in a good setting · Let the twins pick; it's the last night · <a href="https://maps.google.com/?q=Aker+Brygge+Oslo" class="map-btn" target="_blank">📍 Aker Brygge map</a></div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Evening · Pack for departure</div>
+              <div class="tl-detail"><strong>TG955 departs 13:45 tomorrow</strong> · Check-in closes ~11:15 · Flytoget Express from Oslo Central Station takes 22 min — depart hotel by 10:30 · Lay out all luggage tonight · Check 23kg bag weights · All departure logistics on Day 13</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 13 -->
+    <div class="day-card" data-phase="oslo" id="day13">
+      <div class="day-header" onclick="toggleDay('day13')">
+        <div class="day-num"><span class="dn">13</span><span class="dd">Wed</span></div>
+        <div class="day-header-meta">
+          <span class="day-date">May 13</span>
+          <span class="day-loc">Oslo → Bangkok</span>
+          <div class="day-badges"><span class="badge badge-fly">✈ Long-haul</span></div>
+        </div>
+        <div class="day-chevron">▾</div>
+      </div>
+      <div class="day-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot info"></div>
+            <div class="tl-content">
+              <div class="tl-title">Flytoget Express → Oslo Airport (~22 min)</div>
+              <div class="tl-detail">Depart hotel by 11:00. Arrive airport by 11:45 latest.</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot flight"></div>
+            <div class="tl-content">
+              <div class="tl-title">TG955 · Oslo Gardermoen → Bangkok Suvarnabhumi</div>
+              <div class="tl-detail">Dep 13:45 → Arr 06:15 (+1, May 14) · 11h 30m · Seat 51B · 23kg bag <span class="tl-ref">CONFIRMED</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end days-grid -->
+
+  <br>
+
+  <!-- ACCOMMODATION -->
+  <div class="section-title">Accommodation</div>
+  <div class="accom-panel">
+    <div class="accom-cards">
+      <div class="accom-card">
+        <div class="accom-card-head">
+          <div class="accom-icon">🏘</div>
+          <div>
+            <div class="accom-name">Bergen Airbnb</div>
+            <div class="accom-dates">May 1–4 (check-out morning May 4)</div>
+          </div>
+        </div>
+        <div class="accom-addr">Harald Hårfagres gate 15<br>Bergenhus, Bergen 5007</div>
+        <div class="accom-nights">3 nights</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">🛒 Supermarkets</div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>Coop Extra</strong> — Håkonsgaten 36 · 4 min walk <span class="al-hours">Mon–Sat 7:00–midnight · closed Sun</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>REMA 1000 Kløverhuset</strong> — Strandgaten 13 · 8 min walk near Bryggen <span class="al-hours">Mon–Sat 7:00–23:00 · closed Sun</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">🔴</span><span><strong>Bunnpris Torggaten 7</strong> — 6 min walk · <strong>ONLY Sunday option</strong> <span class="al-hours">24/7 incl. Sunday</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">☕ Bakeries & Cafés</div>
+        <div class="accom-local-row"><span class="al-icon">⭐</span><span><strong>Baker Brun</strong> — Klostergaten 2 · 5 min walk · cosy local bakery, cinnamon buns, board games <span class="al-hours">Mon–Fri 8–17, Sat 9–17, Sun 10–17</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">⭐</span><span><strong>Vaag Bakeri</strong> — Nygårdsgaten 4 · 10 min walk · best sourdough in Bergen, cardamom buns <span class="al-hours">Tue–Fri 7–17, Sat 10–16</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">💊 Pharmacy</div>
+        <div class="accom-local-row"><span class="al-icon">💊</span><span><strong>Ditt Apotek Brygge</strong> — Vetrlidsallmenningen 11 · 12 min walk · open 7 days <span class="al-hours">Daily 10:00–18:00</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">📍 Surroundings</div>
+        <div class="accom-local-row"><span class="al-icon">🚶</span><span>5 min walk to <strong>Bryggen</strong> wharf (UNESCO) and the Fish Market</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚡</span><span>8 min walk to <strong>Fløibanen funicular</strong> base station</span></div>
+        <div class="accom-local-row"><span class="al-icon">🏛</span><span>5 min walk to <strong>Bryggens Museum</strong> (medieval excavations, open daily)</span></div>
+        <div class="accom-local-row"><span class="al-icon">⛴</span><span>10 min walk to Beffen harbour ferry (weekday mornings)</span></div>
+        <div class="accom-local-note">⚠️ Stock up Saturday — only Bunnpris is open on Sunday. No alcohol on Sundays; Vinmonopolet is closed.</div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-card-head">
+          <div class="accom-icon">🏔</div>
+          <div>
+            <div class="accom-name">Aurland Cottage</div>
+            <div class="accom-dates">May 4–7 (3 nights)</div>
+          </div>
+        </div>
+        <div class="accom-addr">Skjerdalsvegen 20<br>Aurland 5745</div>
+        <div class="accom-nights">3 nights · Confirm EV charging with host</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">🛒 Supermarket</div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>SPAR Aurland</strong> — Vangen 6A, Aurland village · 4.4★ · 5 min drive <span class="al-hours">Mon–Fri 7:00–21:00 · Sat 9:00–20:00 · closed Sun</span></span></div>
+        <div class="accom-local-note">⚠️ Aurland has one supermarket. Stock up on Sunday items before leaving Bergen on Day 4. Closest Sunday option is Gudvangen (small kiosk) or Voss.</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">☕ Bakeries & Cafés</div>
+        <div class="accom-local-row"><span class="al-icon">⭐</span><span><strong>Marianne Bakeri & Kafé</strong> — Odden 2, Aurland · 4.8★ · 5 min drive · legendary local bakery; apple crumble, marzipan buns, pita wraps, goat cheese salad; also sells local cider and cheeses <span class="al-hours">Mon–Fri 8:00–17:00 · Sat 8:00–16:00</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">🍽 Dinner</div>
+        <div class="accom-local-row"><span class="al-icon">🍺</span><span><strong>Æigir BrewPub</strong> — Flåm (20 min drive) · 4.6★ · Viking-themed, local craft beer, hearty Norwegian food, atmospheric wood/stone interior</span></div>
+        <div class="accom-local-row"><span class="al-icon">🍕</span><span><strong>Sognaporten</strong> — Aurland village (5 min) · 4.0★ · Excellent thin-crust pizza, casual and family-friendly</span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">📍 Surroundings</div>
+        <div class="accom-local-row"><span class="al-icon">🚶</span><span>Short walk/drive to <strong>Aurland village</strong> waterfront and fjord pier</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚗</span><span>5 min drive to <strong>Flåm</strong> (cruise, Fjord Farm, railway)</span></div>
+        <div class="accom-local-row"><span class="al-icon">⛰</span><span>8 km drive up to <strong>Stegastein Viewpoint</strong> (650m fjord panorama)</span></div>
+        <div class="accom-local-row"><span class="al-icon">⚡</span><span>EV charging: Confirm with host · Flåm village has chargers · Gudvangen Viking Valley has 2 chargers</span></div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-card-head">
+          <div class="accom-icon">🌿</div>
+          <div>
+            <div class="accom-name">Lofthus Farm Stay</div>
+            <div class="accom-dates">May 7–10 (check-out morning May 10)</div>
+          </div>
+        </div>
+        <div class="accom-addr">Ullensvangvegen 918<br>Ullensvang 5781</div>
+        <div class="accom-nights">3 nights · Confirm EV charging with host</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">🛒 Supermarkets</div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>Bunnpris Ullensvang</strong> — Sjoarvegen 18 · 2 min drive · closest option <span class="al-hours">Mon–Fri 9:00–20:00 · Sat 9:00–18:00 · closed Sun</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>Ullensvang Handelslag</strong> — Gnr 74, Lofthus · 2 min drive · local co-op, good selection <span class="al-hours">Mon–Fri 9:00–20:00 · Sat 9:00–18:00 · closed Sun</span></span></div>
+        <div class="accom-local-note">⚠️ Both Lofthus supermarkets are closed Sunday. Stock up on Saturday evening before the twins' birthday morning.</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">☕ Bakery</div>
+        <div class="accom-local-row"><span class="al-icon">⭐</span><span><strong>Fløy Bakeri</strong> — Lofthus · 2 min drive · famous skillingsboller (cinnamon rolls); order birthday cake here for May 9 🎂 <span class="al-hours">Call ahead for birthday cake order</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">🍽 Dinner & Drinks</div>
+        <div class="accom-local-row"><span class="al-icon">🍎</span><span><strong>KOMPAEN Bistro og Deli</strong> — Ullensvangveien 887 · 4.5★ · 2 min drive · best burgers in the area, local cider, family-friendly <span class="al-hours">Wed–Sun 12:00–18:00 · closed Mon–Tue</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">🍕</span><span><strong>Lofthus Ekspedisjon</strong> — Sjoarvegen 27 · 4.3★ · fjord-view pizza bar, local cider on tap <span class="al-hours">Fri–Sat evenings only</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">📍 Surroundings</div>
+        <div class="accom-local-row"><span class="al-icon">🌸</span><span>Apple and pear orchards in full <strong>blossom in May</strong> — Hardanger Fruit Trail walks from front door</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚗</span><span>10 min drive to <strong>Kinsarvik</strong> (Husedalen waterfall hike)</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚗</span><span>25 min drive to <strong>Låtefossen</strong> twin waterfall</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚤</span><span>RIB Safari launches from <strong>Hotel Ullensvang pier</strong> — 5 min drive</span></div>
+        <div class="accom-local-row"><span class="al-icon">⚡</span><span>EV charging: Confirm with host · Eidfjord has public chargers (30 min away)</span></div>
+      </div>
+
+      <div class="accom-card">
+        <div class="accom-card-head">
+          <div class="accom-icon">🌆</div>
+          <div>
+            <div class="accom-name">Oslo Stay</div>
+            <div class="accom-dates">May 10–13 (3 nights)</div>
+          </div>
+        </div>
+        <div class="accom-addr">Sankt Halvards gate 22<br>Gamle Oslo 0192</div>
+        <div class="accom-nights">3 nights · Gamle Oslo / Bjørvika area</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">🛒 Supermarkets</div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>REMA 1000 Trelastgården</strong> — Platous gt. 31 · 4.1★ · 12 min walk · well-stocked, good prices <span class="al-hours">Mon–Sat 7:00–23:00 · closed Sun</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>Joker Gamlebyen</strong> — Schweigaards gate 53 · 4.0★ · 8 min walk · convenient neighbourhood store <span class="al-hours">Mon–Fri 6:30–23:00 · Sat–Sun 8:00–23:00 ✅ open Sunday</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">🟢</span><span><strong>Extra St. Halvardsgate</strong> — St. Halvards gate 67 · 3.8★ · 10 min walk · also has Posten post office <span class="al-hours">Mon–Fri 7:00–23:00 · Sat 8:00–23:00 · closed Sun</span></span></div>
+        <div class="accom-local-note">✅ Joker Gamlebyen is open Saturday and Sunday — useful for Sunday May 10 arrival and any Sunday top-up.</div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">☕ Bakeries & Cafés</div>
+        <div class="accom-local-row"><span class="al-icon">⭐</span><span><strong>Silin Bakeri</strong> — Grønlandsleiret 61C · 4.9★ · 8 min walk · Syrian pastries, lahmajun, zatar bread; authentic and excellent value <span class="al-hours">Mon–Sat 10:00–20:00 · Sun 10:00–20:00</span></span></div>
+        <div class="accom-local-row"><span class="al-icon">⭐</span><span><strong>Hånd Bakt OSLO</strong> — Kjølberggata 21 · 4.3★ · 15 min walk · cosy neighbourhood café, sourdough rolls, baked goods <span class="al-hours">Mon–Fri 8:00–16:00 · Sat–Sun 9:00–17:00</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">💊 Pharmacy</div>
+        <div class="accom-local-row"><span class="al-icon">💊</span><span><strong>Ditt Apotek Opera</strong> — Operagata 18 · 10 min walk · open 7 days <span class="al-hours">Mon–Fri 8:00–21:00 · Sat–Sun 10:00–19:00</span></span></div>
+        <hr class="accom-divider">
+        <div class="accom-local-label">📍 Surroundings</div>
+        <div class="accom-local-row"><span class="al-icon">🚶</span><span>10 min walk to <strong>Oslo Opera House</strong> (free roof climb)</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚶</span><span>12 min walk to <strong>MUNCH Museum</strong> and Bjørvika waterfront</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚶</span><span>15 min walk to <strong>Sørenga Sjøbad</strong> (fjord bathing, sandy pool)</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚃</span><span>Tram stop nearby → Vigeland Park (tram 12), Karl Johans Gate, Aker Brygge</span></div>
+        <div class="accom-local-row"><span class="al-icon">🚄</span><span>15 min walk to Oslo Central Station → Flytoget to airport (22 min)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHTS -->
+  <div class="section-title">Flights</div>
+  <div class="flights-panel">
+    <div class="flight-row">
+      <span class="fl-num">TG954</span>
+      <span class="fl-route">Bangkok Suvarnabhumi → Oslo Gardermoen</span>
+      <span class="fl-times">00:05 → 07:25</span>
+      <span class="fl-detail">May 1 · 12h 20m · Seat 51J · 23kg</span>
+      <span class="fl-status">✓ Confirmed</span>
+    </div>
+    <div class="flight-row">
+      <span class="fl-num">DY608</span>
+      <span class="fl-route">Oslo Airport → Bergen Airport</span>
+      <span class="fl-times">10:40 → 11:35</span>
+      <span class="fl-detail">May 1 · 55min · Ref: BRGGCM</span>
+      <span class="fl-status">✓ Confirmed</span>
+    </div>
+    <div class="flight-row">
+      <span class="fl-num">DY631</span>
+      <span class="fl-route">Bergen Airport → Oslo Airport</span>
+      <span class="fl-times">14:30 → 15:25</span>
+      <span class="fl-detail">May 10 · 55min · Ref: BRGGCM</span>
+      <span class="fl-status">✓ Confirmed</span>
+    </div>
+    <div class="flight-row">
+      <span class="fl-num">TG955</span>
+      <span class="fl-route">Oslo Gardermoen → Bangkok Suvarnabhumi</span>
+      <span class="fl-times">13:45 → 06:15+1</span>
+      <span class="fl-detail">May 13 · 11h 30m · Seat 51B · 23kg · Arr May 14</span>
+      <span class="fl-status">✓ Confirmed</span>
+    </div>
+  </div>
+
+  <!-- CAR RENTAL -->
+  <div class="section-title">Car rental</div>
+  <div class="car-panel">
+    <div class="car-icon">🚗</div>
+    <div class="car-info">
+      <div class="car-name">Škoda Enyaq SUV (or similar)</div>
+      <span class="car-ev">⚡ Fully Electric</span>
+      <div class="car-specs">
+        <span class="car-spec">🪟 Air con</span>
+        <span class="car-spec">👜 2 large + 1 small bag · pack light — 4 travellers in an SUV</span>
+        <span class="car-spec">🚪 5 doors</span>
+        <span class="car-spec">💺 5 seats</span>
+        <span class="car-spec">⚙️ Automatic</span>
+        <span class="car-spec">∞ Unlimited mileage</span>
+      </div>
+      <div class="car-pickup-row">
+        <div class="car-pickup">
+          <strong>Pick-up · Mon May 4, 09:00</strong>
+          Bergen Airport, Flesland · Car Rental Centre<br>
+          Avis, 555 Flyplassvegen, Bergen 5258
+        </div>
+        <div class="car-pickup">
+          <strong>Drop-off · Sun May 10, 13:00</strong>
+          Bergen Airport, Flesland · Car Rental Centre<br>
+          +47 55 11 64 30
+        </div>
+      </div>
+      <div style="margin-top:8px;"><span class="car-ref">Booking #795970586</span></div>
+    </div>
+  </div>
+
+  <!-- BERGEN CARD -->
+  <div class="section-title">Bergen Card</div>
+  <div class="bc-panel">
+    <div class="bc-header">
+      <div class="bc-header-icon">🎫</div>
+      <div class="bc-header-text">
+        <h3>Bergen Card — 48h recommended</h3>
+        <p>Free/discounted entry to 30+ attractions · Free buses & Light Rail · Restaurant discounts</p>
+      </div>
+    </div>
+    <div class="bc-verdict">✓ Yes, get it — saves ~NOK 920 net after card cost (2 adults + 2 children). Strong value for a family of 4.</div>
+    <div class="bc-body">
+      <div class="bc-rec">
+        <div class="bc-rec-icon">💡</div>
+        <div class="bc-rec-text">
+          <strong>Get the 48h card · Activate Saturday morning (Day 2)</strong>
+          <span>Covers Day 2 (Sat) + Day 3 (Sun) fully — exactly when all paid activities happen. Don't bother with 72h; Day 1 is jetlag recovery with no paid attractions. Cost: NOK 500 adult / NOK 125 child (3–15). Buy digital at visitbergen.com — card sent by email, show QR code on phone. <strong>For family of 4: 2 adults + 2 child cards = NOK 1,250 total — easily justified by savings.</strong></span>
+        </div>
+      </div>
+
+      <table class="bc-table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Full price (NOK)</th>
+            <th>With card</th>
+            <th>Saving</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fløibanen Funicular (2 adults)</td>
+            <td>~500</td>
+            <td>~250 (50% off May–Sept)</td>
+            <td class="saving">250</td>
+          </tr>
+          <tr>
+            <td>Fløibanen (2 children)</td>
+            <td>~300</td>
+            <td>~150 (50% off)</td>
+            <td class="saving">150</td>
+          </tr>
+          <tr>
+            <td>VilVite Science Centre (2 adults)</td>
+            <td>~400</td>
+            <td>~300 (25% off Mar–Oct)</td>
+            <td class="saving">100</td>
+          </tr>
+          <tr>
+            <td>VilVite (2 children)</td>
+            <td>~240</td>
+            <td>~180 (25% off)</td>
+            <td class="saving">60</td>
+          </tr>
+          <tr>
+            <td>Bergen Aquarium (2 adults)</td>
+            <td>~600</td>
+            <td>~450 (25% off Mar–Oct)</td>
+            <td class="saving">150</td>
+          </tr>
+          <tr>
+            <td>Bergen Aquarium (2 children)</td>
+            <td>~360</td>
+            <td>~270 (25% off)</td>
+            <td class="saving">90</td>
+          </tr>
+          <tr>
+            <td>Troll Museum (2 adults)</td>
+            <td>~360</td>
+            <td>0 (free entry)</td>
+            <td class="saving">360</td>
+          </tr>
+          <tr>
+            <td>Bus/Bybanen transport (2 adults, 2 days)</td>
+            <td>~160</td>
+            <td>0 (free)</td>
+            <td class="saving">160</td>
+          </tr>
+          <tr class="total">
+            <td>Total without card</td>
+            <td>~2,920</td>
+            <td>~1,600</td>
+            <td class="saving">~1,320 saved</td>
+          </tr>
+          <tr class="total">
+            <td colspan="2">Card cost (2 adults + 2 children, 48h)</td>
+            <td colspan="2" style="color:var(--amber);font-weight:500;">NOK 1,250 → Net saving ~NOK 920+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="bc-footer">
+      <div class="bc-note"><span class="bc-note-dot">⚠</span><span><strong>Fløibanen funicular:</strong> Digital card holders must buy tickets via floyen.no/en/bergencard — NOT the normal ticket page. Use the unique reference code from your card email.</span></div>
+      <div class="bc-note"><span class="bc-note-dot">ℹ</span><span>Card also covers Håkon's Hall, Bryggens Museum, Bergen Maritime Museum and more. Restaurant discounts (~10–20%) at selected venues add further value.</span></div>
+      <div class="bc-note"><span class="bc-note-dot">🔗</span><span><a href="https://en.visitbergen.com/bergen-card" class="map-btn" target="_blank">Buy Bergen Card online</a></span></div>
+    </div>
+  </div>
+
+  <!-- BOOKING CHECKLIST -->
+  <div class="section-title">Booking checklist</div>
+  <div class="checklist">
+    <div class="check-grid" id="checklist">
+      <div class="check-item done" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-label">TG954/955 Thai Airways flights</span><span class="check-priority ok">Done</span></div>
+      <div class="check-item done" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-label">DY608/631 Norwegian Air domestics</span><span class="check-priority ok">Done</span></div>
+      <div class="check-item done" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-label">Avis car rental (Booking #795970586)</span><span class="check-priority ok">Done</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Bergen Card 48h — buy online (Day 2–3)</span><span class="check-priority">⚠ Urgent</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Flåm Zipline — confirm twins ≥25kg then book (Day 5)</span><span class="check-priority">⚠ Urgent</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Flåmsbana train tickets — Day 5 (Flåm → Myrdal full route + Blomheller → Flåm after zipline)</span><span class="check-priority">⚠ Urgent</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Munch Museum tickets Oslo (Day 12)</span><span class="check-priority">Book soon</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Confirm EV charging at Aurland stay</span><span class="check-priority">Before May 4</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Confirm EV charging at Lofthus stay</span><span class="check-priority">Before May 7</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Optional: Mostraumen cruise (Day 2)</span><span class="check-priority">Optional</span></div>
+      <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="check-label">Check Bygdøy museum opening hours</span><span class="check-priority">Before May 11</span></div>
+    </div>
+  </div>
+
+  <!-- NORWAY TIPS -->
+  <div class="section-title">Norway practical tips</div>
+  <div class="tips">
+    <div class="tip-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🛒</div>
+        <div class="tip-title">Sunday shopping</div>
+        <div class="tip-text">Most supermarkets closed on Sundays. Only Bunnpris (Bergen, 24/7) stays open. Stock up on Saturdays.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⚡</div>
+        <div class="tip-title">EV charging</div>
+        <div class="tip-text">Norway has great EV infrastructure. Use Recharge or Plugsharing apps. Always charge overnight at each stay.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🌧</div>
+        <div class="tip-title">Bergen weather</div>
+        <div class="tip-text">Bergen is one of Europe's rainiest cities. Pack waterproofs for everyone. Always have a rainy-day plan.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🍷</div>
+        <div class="tip-title">Alcohol rules</div>
+        <div class="tip-text">Wine & spirits only from Vinmonopolet state shops. Supermarkets sell beer only. Vinmonopolet closed Sundays.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">💳</div>
+        <div class="tip-title">Cash-free country</div>
+        <div class="tip-text">Norway is almost entirely card-based. You'll rarely need cash — even small cafés and markets take cards.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🕐</div>
+        <div class="tip-title">Early/late light</div>
+        <div class="tip-text">May 1–13: Bergen sunrise ~05:50, sunset ~21:30. Oslo sunset ~21:40 by May 13. Lots of daylight for activities.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<script>
+  function toggleDay(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  function filterPhase(phase) {
+    document.querySelectorAll('.phase-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.day-card').forEach(card => {
+      if (phase === 'all' || card.dataset.phase === phase) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  function toggleCheck(item) {
+    item.classList.toggle('done');
+    const box = item.querySelector('.check-box');
+    box.textContent = item.classList.contains('done') ? '✓' : '';
+  }
+
+  // Open Day 1 by default
+  document.getElementById('day1').classList.add('open');
+</script>
+
+</body>
+</html>
